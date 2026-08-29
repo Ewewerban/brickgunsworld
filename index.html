@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="pl">
+<html lang="en">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -34,8 +34,6 @@
             display: flex;
             justify-content: space-between;
             align-items: center;
-            flex-wrap: wrap;
-            gap: 1rem;
         }
 
         .logo h1 {
@@ -47,15 +45,6 @@
 
         .logo span {
             color: var(--accent);
-        }
-
-        .lang-select {
-            background: var(--bg);
-            color: var(--text);
-            border: 1px solid var(--border);
-            padding: 0.5rem;
-            border-radius: 4px;
-            cursor: pointer;
         }
 
         nav {
@@ -99,7 +88,6 @@
             display: block;
         }
 
-        /* SIATKA KART Z INSTRUKCJAMI */
         .instructions-grid {
             display: grid;
             grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
@@ -188,23 +176,15 @@
         <div class="logo">
             <h1>Brick <span>Guns</span> World</h1>
         </div>
-        <div>
-            <label for="lang">Język: </label>
-            <select id="lang" class="lang-select" onchange="changeLang(this.value)">
-                <option value="pl">PL</option>
-                <option value="en">EN</option>
-                <option value="ru">RU</option>
-            </select>
-        </div>
     </header>
 
     <nav>
         <ul>
-            <li><a href="#" class="nav-link active" onclick="showPage('instructions', this)">Instrukcje</a></li>
+            <li><a href="#" class="nav-link active" onclick="showPage('instructions', this)">Instructions</a></li>
             <li><a href="#" class="nav-link" onclick="showPage('tutorials', this)">Tutorials</a></li>
             <li><a href="#" class="nav-link" onclick="showPage('builds', this)">Builds</a></li>
             <li><a href="#" class="nav-link" onclick="showPage('news', this)">News</a></li>
-            <li><a href="#" class="nav-link" onclick="showPage('add-builds', this)">Add Buildings</a></li>
+            <li><a href="#" class="nav-link" onclick="showPage('add-builds', this)">Add Builds</a></li>
             <li><a href="https://discord.gg/YOUR_DISCORD_LINK" target="_blank">Chat (Discord)</a></li>
             <li><a href="#" class="nav-link" onclick="showPage('coming-soon', this)">Coming Soon</a></li>
         </ul>
@@ -212,83 +192,83 @@
 
     <main>
 
-        <!-- KATALOG INSTRUKCJI -->
+        <!-- INSTRUCTIONS CATALOG -->
         <section id="instructions" class="page-section active">
-            <h2>Katalog Instrukcji</h2>
+            <h2>Instructions Catalog</h2>
             
             <div class="instructions-grid">
 
-                <!-- TUTAJ DODAWAJ NOWE KARTY PROJEKTÓW (Początek) -->
+                <!-- ADD NEW PROJECT CARDS HERE (Start) -->
 
-                <!-- KARTA 1: AK-47 -->
+                <!-- CARD 1: AK-47 -->
                 <div class="card">
                     <img src="https://via.placeholder.com/400x250?text=AK-47" alt="AK-47">
                     <div class="card-content">
                         <div class="card-title">AK-47 Custom</div>
-                        <div class="card-author">Autor: JanKowalski</div>
-                        <div class="card-desc">Replika AK-47 z klocków z mobilnym zamkiem i wyciąganym magazynkiem.</div>
-                        <a href="instrukcje/ak47.html" class="btn">Zobacz / Pobierz instrukcję</a>
+                        <div class="card-author">Author: JanKowalski</div>
+                        <div class="card-desc">Lego AK-47 replica with a functional charging handle and removable magazine.</div>
+                        <a href="instrukcje/ak47.html" class="btn">View / Download Instructions</a>
                     </div>
                 </div>
 
-                <!-- SZABLON NOWEJ KARTY PROJEKTU (Skopiuj ten blok, aby dodać kolejną budowlę):
+                <!-- NEW CARD TEMPLATE:
                 <div class="card">
-                    <img src="https://via.placeholder.com/400x250?text=NAZWA_PLIKU" alt="NAZWA_PROJEKTU">
+                    <img src="https://via.placeholder.com/400x250?text=FILENAME" alt="PROJECT_NAME">
                     <div class="card-content">
-                        <div class="card-title">TUTAJ_NAZWA_PROJEKTU</div>
-                        <div class="card-author">Autor: TUTAJ_NICK</div>
-                        <div class="card-desc">TUTAJ_KRÓTKI_OPIS.</div>
-                        <a href="instrukcje/NAZWA_PLIKU.html" class="btn">Zobacz / Pobierz instrukcję</a>
+                        <div class="card-title">PROJECT_NAME</div>
+                        <div class="card-author">Author: CREATOR_NICK</div>
+                        <div class="card-desc">SHORT_DESCRIPTION</div>
+                        <a href="instrukcje/FILENAME.html" class="btn">View / Download Instructions</a>
                     </div>
                 </div>
                 -->
 
-                <!-- TUTAJ DODAWAJ NOWE KARTY PROJEKTÓW (Koniec) -->
+                <!-- ADD NEW PROJECT CARDS HERE (End) -->
 
             </div>
         </section>
 
-        <!-- SEKCJA: TUTORIALS -->
+        <!-- TUTORIALS SECTION -->
         <section id="tutorials" class="page-section">
-            <h2>Poradniki i Tutoriale</h2>
-            <p style="margin-top: 1rem;">Wkrótce pojawią się tu poradniki krok po kroku.</p>
+            <h2>Tutorials & Guides</h2>
+            <p style="margin-top: 1rem;">Video tutorials and step-by-step guides coming soon.</p>
         </section>
 
-        <!-- SEKCJA: BUILDS -->
+        <!-- BUILDS SECTION -->
         <section id="builds" class="page-section">
-            <h2>Projekty Społeczności</h2>
-            <p style="margin-top: 1rem;">Galeria prac nadesłanych przez użytkowników.</p>
+            <h2>Community Builds</h2>
+            <p style="margin-top: 1rem;">Gallery of models submitted by our community members.</p>
         </section>
 
-        <!-- SEKCJA: NEWS -->
+        <!-- NEWS SECTION -->
         <section id="news" class="page-section">
-            <h2>Aktualności</h2>
-            <p style="margin-top: 1rem;">Najnowsze wiadomości i informacje o aktualizacjach.</p>
+            <h2>Latest News</h2>
+            <p style="margin-top: 1rem;">Stay updated with site updates and new model releases.</p>
         </section>
 
-        <!-- SEKCJA: ADD BUILDINGS -->
+        <!-- ADD BUILDS SECTION -->
         <section id="add-builds" class="page-section">
             <div class="info-box">
-                <h2>Jak dodać własną budowlę?</h2>
+                <h2>How to Submit Your Build</h2>
                 <ol>
-                    <li>Wejdź na nasz serwer Discord w zakładce <b>Chat</b>.</li>
-                    <li>Przejdź do kanału forum <code>#yours-project</code>.</li>
-                    <li>Stwórz nowy post zawierający:
+                    <li>Join our Discord server using the <b>Chat</b> link in the navigation menu.</li>
+                    <li>Head over to the <code>#yours-project</code> forum channel.</li>
+                    <li>Create a new post containing:
                         <ul>
-                            <li>Nazwę projektu</li>
-                            <li>Autora</li>
-                            <li>Zdjęcie instrukcji/budowli</li>
-                            <li>Plik instrukcji lub link do pobrania</li>
+                            <li>Project Title</li>
+                            <li>Author Name</li>
+                            <li>Clear preview photos</li>
+                            <li>Instruction file or download link</li>
                         </ul>
                     </li>
                 </ol>
             </div>
         </section>
 
-        <!-- SEKCJA: COMING SOON -->
+        <!-- COMING SOON SECTION -->
         <section id="coming-soon" class="page-section">
             <h2>Coming Soon</h2>
-            <p style="margin-top: 1rem;">Nowe funkcje są w trakcie przygotowywania.</p>
+            <p style="margin-top: 1rem;">New features and content modules are currently in development.</p>
         </section>
 
     </main>
@@ -308,13 +288,6 @@
             document.getElementById(pageId).classList.add('active');
             if (element) {
                 element.classList.add('active');
-            }
-        }
-
-        function changeLang(val) {
-            if (val === 'ru') {
-                alert("Give me back Ukraine and we'll talk / Oddaj Ukrainę to pogadamy");
-                document.getElementById('lang').value = 'pl';
             }
         }
     </script>
