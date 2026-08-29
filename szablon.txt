@@ -1,0 +1,93 @@
+<!DOCTYPE html>
+<html lang="pl">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>PROJEKT_NAZWA - Brick Guns World</title>
+    <style>
+        :root { --bg: #121412; --card-bg: #1c201c; --text: #e0e4e0; --accent: #556b2f; --accent-hover: #6b8e23; --border: #343d34; }
+        * { box-sizing: border-box; margin: 0; padding: 0; font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif; }
+        body { background-color: var(--bg); color: var(--text); padding-bottom: 50px; }
+        header { background-color: var(--card-bg); border-bottom: 2px solid var(--accent); padding: 1rem 2rem; display: flex; justify-content: space-between; align-items: center; }
+        .logo h1 { color: var(--text); font-size: 1.5rem; text-transform: uppercase; }
+        .logo span { color: var(--accent); }
+        .btn-back { background-color: transparent; color: var(--text); border: 1px solid var(--border); padding: 0.5rem 1rem; border-radius: 4px; text-decoration: none; font-weight: bold; }
+        .btn-back:hover { background-color: var(--border); }
+        main { max-width: 1000px; margin: 2rem auto; padding: 0 1rem; }
+        .project-wrapper { background-color: var(--card-bg); border: 1px solid var(--border); border-radius: 8px; padding: 2rem; }
+        .project-header { margin-bottom: 1.5rem; border-bottom: 1px solid var(--border); padding-bottom: 1rem; }
+        .project-title { font-size: 2rem; margin-bottom: 0.3rem; }
+        .project-author { color: var(--accent); font-weight: bold; }
+        .project-content { display: grid; grid-template-columns: 1fr 320px; gap: 2rem; }
+        @media (max-width: 768px) { .project-content { grid-template-columns: 1fr; } }
+        .project-image-box img { width: 100%; border-radius: 6px; border: 1px solid var(--border); object-fit: cover; max-height: 400px; }
+        .project-description { margin-top: 1.5rem; line-height: 1.6; }
+        .sidebar { background-color: var(--bg); border: 1px solid var(--border); border-radius: 6px; padding: 1.5rem; display: flex; flex-direction: column; gap: 1.2rem; height: fit-content; }
+        .meta-group { border-bottom: 1px solid var(--border); padding-bottom: 0.8rem; }
+        .meta-group:last-child { border-bottom: none; }
+        .meta-label { font-size: 0.75rem; text-transform: uppercase; color: var(--accent); font-weight: bold; margin-bottom: 0.2rem; }
+        .meta-value { font-size: 1rem; }
+        .btn-download { background-color: var(--accent); color: white; text-align: center; padding: 0.8rem 1rem; border-radius: 4px; text-decoration: none; font-weight: bold; margin-top: 0.5rem; }
+        .btn-download:hover { background-color: var(--accent-hover); }
+    </style>
+</head>
+<body>
+
+    <header>
+        <div class="logo">
+            <h1>Brick <span>Guns</span> World</h1>
+        </div>
+        <a href="../index.html" class="btn-back">← Powrót do strony głównej</a>
+    </header>
+
+    <main>
+        <div class="project-wrapper">
+            
+            <div class="project-header">
+                <h1 class="project-title"><!-- TUTAJ NAZWA PROJEKTU --></h1>
+                <p class="project-author">Autor: <!-- TUTAJ AUTOR --></p>
+            </div>
+
+            <div class="project-content">
+                <div>
+                    <div class="project-image-box">
+                        <img src="<!-- TUTAJ LINK DO ZDJĘCIA LUB GITHUB -->" alt="<!-- NAZWA PROJEKTU -->">
+                    </div>
+                    <div class="project-description">
+                        <h3>Opis budowli:</h3>
+                        <p style="margin-top: 0.5rem;">
+                            <!-- TUTAJ OPIS -->
+                        </p>
+                    </div>
+                </div>
+
+                <div class="sidebar">
+                    <div class="meta-group">
+                        <div class="meta-label">Twórca</div>
+                        <div class="meta-value"><!-- TUTAJ AUTOR --></div>
+                    </div>
+
+                    <div class="meta-group">
+                        <div class="meta-label">Liczba elementów</div>
+                        <div class="meta-value"><!-- TUTAJ LICZBA KLOCKÓW --></div>
+                    </div>
+
+                    <div class="meta-group">
+                        <div class="meta-label">Trudność</div>
+                        <div class="meta-value"><!-- TUTAJ TRUDNOŚĆ --></div>
+                    </div>
+
+                    <div class="meta-group">
+                        <div class="meta-label">Format instrukcji</div>
+                        <div class="meta-value"><!-- PDF / IO / LXF --></div>
+                    </div>
+
+                    <a href="../files/<!-- TUTAJ_NAZWA_PLIKU.pdf -->" download class="btn-download">Pobierz instrukcję</a>
+                </div>
+            </div>
+
+        </div>
+    </main>
+
+</body>
+</html>
