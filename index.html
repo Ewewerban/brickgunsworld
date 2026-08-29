@@ -1,0 +1,376 @@
+<!DOCTYPE html>
+<html lang="pl" data-theme="dark">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Brick Guns World</title>
+    <style>
+        :root {
+            --bg-color: #121412;
+            --card-bg: #1c201c;
+            --text-color: #e0e4e0;
+            --accent-color: #556b2f; /* Oliwkowy szary / Olive drab */
+            --accent-hover: #6b8e23;
+            --border-color: #343d34;
+        }
+
+        [data-theme="light"] {
+            --bg-color: #f4f5f4;
+            --card-bg: #ffffff;
+            --text-color: #1a1c1a;
+            --accent-color: #4b5d28;
+            --accent-hover: #3b4a1f;
+            --border-color: #d0d5d0;
+        }
+
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+        }
+
+        body {
+            background-color: var(--bg-color);
+            color: var(--text-color);
+            transition: background-color 0.3s, color 0.3s;
+            padding-bottom: 50px;
+        }
+
+        header {
+            background-color: var(--card-bg);
+            border-bottom: 2px solid var(--accent-color);
+            padding: 1rem 2rem;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            flex-wrap: wrap;
+            gap: 1rem;
+        }
+
+        .logo h1 {
+            color: var(--text-color);
+            font-size: 1.8rem;
+            letter-spacing: 1px;
+            text-transform: uppercase;
+        }
+
+        .logo span {
+            color: var(--accent-color);
+        }
+
+        .controls {
+            display: flex;
+            align-items: center;
+            gap: 1rem;
+        }
+
+        .lang-select, .theme-toggle {
+            background: var(--bg-color);
+            color: var(--text-color);
+            border: 1px solid var(--border-color);
+            padding: 0.5rem;
+            border-radius: 4px;
+            cursor: pointer;
+        }
+
+        nav {
+            background-color: var(--card-bg);
+            border-bottom: 1px solid var(--border-color);
+            padding: 0.5rem 2rem;
+        }
+
+        nav ul {
+            display: flex;
+            list-style: none;
+            gap: 1rem;
+            flex-wrap: wrap;
+        }
+
+        nav a {
+            color: var(--text-color);
+            text-decoration: none;
+            padding: 0.5rem 1rem;
+            border-radius: 4px;
+            transition: background-color 0.2s;
+            font-weight: 500;
+        }
+
+        nav a:hover, nav a.active {
+            background-color: var(--accent-color);
+            color: #fff;
+        }
+
+        main {
+            max-width: 1200px;
+            margin: 2rem auto;
+            padding: 0 1rem;
+        }
+
+        .page {
+            display: none;
+        }
+
+        .page.active {
+            display: block;
+        }
+
+        /* Grid dla instrukcji */
+        .instructions-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+            gap: 1.5rem;
+            margin-top: 1.5rem;
+        }
+
+        .card {
+            background-color: var(--card-bg);
+            border: 1px solid var(--border-color);
+            border-radius: 8px;
+            overflow: hidden;
+            display: flex;
+            flex-direction: column;
+        }
+
+        .card img {
+            width: 100%;
+            height: 180px;
+            object-fit: cover;
+            background-color: var(--border-color);
+        }
+
+        .card-content {
+            padding: 1rem;
+            display: flex;
+            flex-direction: column;
+            flex-grow: 1;
+        }
+
+        .card-title {
+            font-size: 1.2rem;
+            margin-bottom: 0.5rem;
+        }
+
+        .card-author {
+            font-size: 0.85rem;
+            color: var(--accent-color);
+            margin-bottom: 0.5rem;
+            font-weight: bold;
+        }
+
+        .card-desc {
+            font-size: 0.9rem;
+            margin-bottom: 1rem;
+            flex-grow: 1;
+        }
+
+        .btn {
+            background-color: var(--accent-color);
+            color: white;
+            border: none;
+            padding: 0.6rem 1rem;
+            border-radius: 4px;
+            cursor: pointer;
+            text-align: center;
+            text-decoration: none;
+            font-weight: bold;
+            transition: background-color 0.2s;
+        }
+
+        .btn:hover {
+            background-color: var(--accent-hover);
+        }
+
+        .tutorial-box {
+            background-color: var(--card-bg);
+            border: 1px solid var(--border-color);
+            padding: 2rem;
+            border-radius: 8px;
+            max-width: 800px;
+        }
+
+        .tutorial-box ol {
+            margin-left: 1.5rem;
+            margin-top: 1rem;
+            line-height: 1.8;
+        }
+
+        /* Pop-up modal */
+        .modal {
+            display: none;
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background-color: rgba(0,0,0,0.7);
+            justify-content: center;
+            align-items: center;
+            z-index: 1000;
+        }
+
+        .modal-content {
+            background-color: var(--card-bg);
+            padding: 2rem;
+            border-radius: 8px;
+            border: 2px solid var(--accent-color);
+            max-width: 500px;
+            text-align: center;
+        }
+
+        .modal-content h3 {
+            margin-bottom: 1rem;
+        }
+
+        .modal-content button {
+            margin-top: 1.5rem;
+        }
+    </style>
+</head>
+<body>
+
+    <header>
+        <div class="logo">
+            <h1>Brick <span>Guns</span> World</h1>
+        </div>
+        <div class="controls">
+            <button class="theme-toggle" id="themeToggle">Tryb Jasny/Ciemny</button>
+            <select class="lang-select" id="langSelect">
+                <option value="pl">PL</option>
+                <option value="en">EN</option>
+                <option value="ru">RU</option>
+            </select>
+        </div>
+    </header>
+
+    <nav>
+        <ul>
+            <li><a href="#" class="nav-link active" data-page="instructions">Instrukcje</a></li>
+            <li><a href="#" class="nav-link" data-page="tutorials">Tutorials</a></li>
+            <li><a href="#" class="nav-link" data-page="builds">Builds</a></li>
+            <li><a href="#" class="nav-link" data-page="news">News</a></li>
+            <li><a href="#" class="nav-link" data-page="add-builds">Add Buildings</a></li>
+            <li><a href="https://discord.gg/YOUR_DISCORD_LINK" target="_blank">Chat (Discord)</a></li>
+            <li><a href="#" class="nav-link" data-page="coming-soon">Coming Soon</a></li>
+        </ul>
+    </nav>
+
+    <main>
+        <!-- Sekcja Instrukcje -->
+        <section id="instructions" class="page active">
+            <h2>Instrukcje Budowy</h2>
+            <div class="instructions-grid">
+                <!-- Przykładowy przedmiot -->
+                <div class="card">
+                    <img src="https://via.placeholder.com/300x180?text=AK-12+Lego" alt="AK-12">
+                    <div class="card-content">
+                        <div class="card-title">AK-12 Tutorial</div>
+                        <div class="card-author">Autor: Builder123</div>
+                        <div class="card-desc">Kompletna instrukcja wykonania modelu AK-12 z klocków z ruchomym zamkiem.</div>
+                        <a href="#" class="btn">Pobierz / Zobacz</a>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Sekcja Tutorials -->
+        <section id="tutorials" class="page">
+            <h2>Poradniki i Tutoriale</h2>
+            <p style="margin-top: 1rem;">Materiały wideo oraz krok po kroku jak tworzyć własne mechanizmy z klocków.</p>
+        </section>
+
+        <!-- Sekcja Builds -->
+        <section id="builds" class="page">
+            <h2>Projekty Społeczności</h2>
+            <p style="margin-top: 1rem;">Galeria gotowych modeli przesłanych przez użytkowników.</p>
+        </section>
+
+        <!-- Sekcja News -->
+        <section id="news" class="page">
+            <h2>Aktualności</h2>
+            <p style="margin-top: 1rem;">Najnowsze wiadomości dotyczące strony i nowych projektów.</p>
+        </section>
+
+        <!-- Sekcja Add Buildings -->
+        <section id="add-builds" class="page">
+            <div class="tutorial-box">
+                <h2>Jak dodać własną budowlę?</h2>
+                <p style="margin-top: 0.5rem;">Chcesz opublikować swój projekt na stronie? Wykonaj następujące kroki:</p>
+                <ol>
+                    <li>Wejdź na nasz serwer Discord (zakładka <strong>Chat</strong> w menu).</li>
+                    <li>Przejdź do kanału forum: <code>#yours-project</code>.</li>
+                    <li>Utwórz nowy post zawierający:
+                        <ul>
+                            <li>Nazwę projektu</li>
+                            <li>Imię / Nick autora</li>
+                            <li>Zdjęcie podglądowe lub instrukcję</li>
+                            <li>Plik projektu lub link do pobrania</li>
+                        </ul>
+                    </li>
+                    <li>Po weryfikacji przez moderatorów Twój projekt trafi na stronę główną!</li>
+                </ol>
+            </div>
+        </section>
+
+        <!-- Sekcja Coming Soon -->
+        <section id="coming-soon" class="page">
+            <h2>Coming Soon</h2>
+            <p style="margin-top: 1rem;">Nowe funkcje i moduły są w trakcie przygotowywania. Wróć niedługo!</p>
+        </section>
+    </main>
+
+    <!-- Modal komunikat dla języka RU -->
+    <div class="modal" id="uaModal">
+        <div class="modal-content">
+            <h3>Give me back Ukraine and we'll talk</h3>
+            <p>Oddaj Ukrainę to pogadamy</p>
+            <button class="btn" id="closeModal">Zamknij / Close</button>
+        </div>
+    </div>
+
+    <script>
+        // Nawigacja między zakładkami
+        const navLinks = document.querySelectorAll('.nav-link');
+        const pages = document.querySelectorAll('.page');
+
+        navLinks.forEach(link => {
+            link.addEventListener('click', (e) => {
+                const targetPage = link.getAttribute('data-page');
+                if (!targetPage) return; // Jeśli odnośnik zewnętrzny (np. Discord)
+
+                e.preventDefault();
+                navLinks.forEach(l => l.classList.remove('active'));
+                pages.forEach(p => p.classList.remove('active'));
+
+                link.classList.add('active');
+                document.getElementById(targetPage).classList.add('active');
+            });
+        });
+
+        // Obsługa jasny/ciemny motyw
+        const themeToggle = document.getElementById('themeToggle');
+        themeToggle.addEventListener('click', () => {
+            const currentTheme = document.documentElement.getAttribute('data-theme');
+            const newTheme = currentTheme === 'dark' ? 'light' : 'dark';
+            document.documentElement.setAttribute('data-theme', newTheme);
+        });
+
+        // Wybór języka i alert dla RU
+        const langSelect = document.getElementById('langSelect');
+        const uaModal = document.getElementById('uaModal');
+        const closeModal = document.getElementById('closeModal');
+
+        langSelect.addEventListener('change', (e) => {
+            if (e.target.value === 'ru') {
+                uaModal.style.display = 'flex';
+                // Przywracamy domyślny język po wyświetleniu komunikatu
+                langSelect.value = 'pl';
+            }
+        });
+
+        closeModal.addEventListener('click', () => {
+            uaModal.style.display = 'none';
+        });
+    </script>
+</body>
+</html>
