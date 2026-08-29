@@ -25,6 +25,9 @@
             background-color: var(--bg);
             color: var(--text);
             padding-bottom: 50px;
+            min-height: 100vh;
+            display: flex;
+            flex-direction: column;
         }
 
         header {
@@ -78,6 +81,7 @@
             max-width: 1200px;
             margin: 2rem auto;
             padding: 0 1rem;
+            flex: 1;
         }
 
         .page-section {
@@ -168,6 +172,25 @@
             margin-top: 1rem;
             line-height: 1.8;
         }
+
+        footer {
+            text-align: center;
+            padding: 1.5rem;
+            margin-top: auto;
+            border-top: 1px solid var(--border);
+            background-color: var(--card-bg);
+        }
+
+        footer a {
+            color: var(--text);
+            text-decoration: none;
+            font-weight: 500;
+            transition: 0.2s;
+        }
+
+        footer a:hover {
+            color: var(--accent);
+        }
     </style>
 </head>
 <body>
@@ -185,7 +208,7 @@
             <li><a href="#" class="nav-link" onclick="showPage('builds', this)">Builds</a></li>
             <li><a href="#" class="nav-link" onclick="showPage('news', this)">News</a></li>
             <li><a href="#" class="nav-link" onclick="showPage('add-builds', this)">Add Builds</a></li>
-            <li><a href="https://discord.gg/cRCr7W5yAU" target="_blank">Chat (Discord)</a></li>
+            <li><a href="https://discord.gg/YOUR_DISCORD_LINK" target="_blank">Chat (Discord)</a></li>
             <li><a href="#" class="nav-link" onclick="showPage('coming-soon', this)">Coming Soon</a></li>
         </ul>
     </nav>
@@ -210,18 +233,6 @@
                         <a href="instrukcje/ak47.html" class="btn">View / Download Instructions</a>
                     </div>
                 </div>
-
-                <!-- NEW CARD TEMPLATE:
-                <div class="card">
-                    <img src="https://via.placeholder.com/400x250?text=FILENAME" alt="PROJECT_NAME">
-                    <div class="card-content">
-                        <div class="card-title">PROJECT_NAME</div>
-                        <div class="card-author">Author: CREATOR_NICK</div>
-                        <div class="card-desc">SHORT_DESCRIPTION</div>
-                        <a href="instrukcje/FILENAME.html" class="btn">View / Download Instructions</a>
-                    </div>
-                </div>
-                -->
 
                 <!-- ADD NEW PROJECT CARDS HERE (End) -->
 
@@ -272,6 +283,10 @@
         </section>
 
     </main>
+
+    <footer>
+        <a href="ewewerban.html">Created with ❤️by Ewewerban</a>
+    </footer>
 
     <script>
         function showPage(pageId, element) {
