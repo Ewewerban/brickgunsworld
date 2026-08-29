@@ -12,6 +12,7 @@
             --accent: #556b2f;
             --accent-hover: #6b8e23;
             --border: #343d34;
+            --text-muted: #8a948a;
         }
 
         * {
@@ -24,7 +25,6 @@
         body {
             background-color: var(--bg);
             color: var(--text);
-            padding-bottom: 50px;
             min-height: 100vh;
             display: flex;
             flex-direction: column;
@@ -82,6 +82,7 @@
             margin: 2rem auto;
             padding: 0 1rem;
             flex: 1;
+            width: 100%;
         }
 
         .page-section {
@@ -175,16 +176,16 @@
 
         footer {
             text-align: center;
-            padding: 1.5rem;
+            padding: 0.8rem 1rem;
             margin-top: auto;
             border-top: 1px solid var(--border);
             background-color: var(--card-bg);
         }
 
         footer a {
-            color: var(--text);
+            color: var(--text-muted);
             text-decoration: none;
-            font-weight: 500;
+            font-size: 0.75rem;
             transition: 0.2s;
         }
 
@@ -285,7 +286,7 @@
     </main>
 
     <footer>
-        <a href="ewewerban.html">Created with ❤️by Ewewerban</a>
+        <a href="ewewerban.html">with ❤️ by Ewewerban</a>
     </footer>
 
     <script>
