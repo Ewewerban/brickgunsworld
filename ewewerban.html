@@ -3,9 +3,175 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Hello World</title>
+    <title>About Developer - Brick Guns World</title>
+    <style>
+        :root {
+            --bg: #121412;
+            --card-bg: #1c201c;
+            --text: #e0e4e0;
+            --accent: #556b2f;
+            --accent-hover: #6b8e23;
+            --border: #343d34;
+            --text-muted: #8a948a;
+        }
+
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+        }
+
+        body {
+            background-color: var(--bg);
+            color: var(--text);
+            min-height: 100vh;
+            display: flex;
+            flex-direction: column;
+        }
+
+        header {
+            background-color: var(--card-bg);
+            border-bottom: 2px solid var(--accent);
+            padding: 1rem 2rem;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .logo h1 {
+            color: var(--text);
+            font-size: 1.5rem;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+        }
+
+        .logo span {
+            color: var(--accent);
+        }
+
+        .btn-back {
+            background-color: transparent;
+            color: var(--text);
+            border: 1px solid var(--border);
+            padding: 0.5rem 1rem;
+            border-radius: 4px;
+            text-decoration: none;
+            font-weight: bold;
+            transition: 0.2s;
+        }
+
+        .btn-back:hover {
+            background-color: var(--border);
+        }
+
+        main {
+            max-width: 800px;
+            margin: 3rem auto;
+            padding: 0 1rem;
+            flex: 1;
+            width: 100%;
+        }
+
+        .profile-card {
+            background-color: var(--card-bg);
+            border: 1px solid var(--border);
+            border-radius: 8px;
+            padding: 2.5rem;
+            text-align: center;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            gap: 1.5rem;
+        }
+
+        .profile-title {
+            font-size: 2.2rem;
+            color: var(--text);
+        }
+
+        .profile-role {
+            color: var(--accent);
+            font-weight: bold;
+            font-size: 1.1rem;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+        }
+
+        .profile-bio {
+            line-height: 1.6;
+            max-width: 600px;
+            color: var(--text-muted);
+        }
+
+        .coffee-section {
+            margin-top: 1rem;
+            padding-top: 1.5rem;
+            border-top: 1px solid var(--border);
+            width: 100%;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            gap: 1rem;
+        }
+
+        .coffee-text {
+            font-size: 0.95rem;
+            color: var(--text);
+        }
+
+        footer {
+            text-align: center;
+            padding: 0.8rem 1rem;
+            margin-top: auto;
+            border-top: 1px solid var(--border);
+            background-color: var(--card-bg);
+        }
+
+        footer a {
+            color: var(--text-muted);
+            text-decoration: none;
+            font-size: 0.75rem;
+            transition: 0.2s;
+        }
+
+        footer a:hover {
+            color: var(--accent);
+        }
+    </style>
 </head>
 <body>
-    <h1>Hello, World!</h1>
+
+    <header>
+        <div class="logo">
+            <h1>Brick <span>Guns</span> World</h1>
+        </div>
+        <a href="index.html" class="btn-back">← Back to Main Page</a>
+    </header>
+
+    <main>
+        <div class="profile-card">
+            <div>
+                <h1 class="profile-title">Ewewerban</h1>
+                <p class="profile-role">Lead Developer & Webmaster</p>
+            </div>
+
+            <p class="profile-bio">
+                Hey! I'm Ewewerban, the developer behind Brick Guns World. I build and maintain 
+                this site to provide a clean, accessible catalog for custom Lego weapon instructions 
+                and community projects.
+            </p>
+
+            <div class="coffee-section">
+                <p class="coffee-text">Support the project and buy me a coffee:</p>
+                <a href="https://buycoffee.to/ewewerban" target="_blank"><img src="https://buycoffee.to/static/img/share/share-button-dark.png" style="width: 244px; height: 63px" alt="Postaw kawę dla Ewewerban na buycoffee.to"></a>
+            </div>
+        </div>
+    </main>
+
+    <footer>
+        <a href="ewewerban.html">with ❤️ by Ewewerban</a>
+    </footer>
+
 </body>
 </html>
