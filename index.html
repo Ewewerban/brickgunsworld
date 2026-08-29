@@ -4,108 +4,311 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Brick Guns World</title>
+    <style>
+        :root {
+            --bg: #121412;
+            --card-bg: #1c201c;
+            --text: #e0e4e0;
+            --accent: #556b2f;
+            --accent-hover: #6b8e23;
+            --border: #343d34;
+        }
+
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+        }
+
+        body {
+            background-color: var(--bg);
+            color: var(--text);
+            padding-bottom: 50px;
+        }
+
+        header {
+            background-color: var(--card-bg);
+            border-bottom: 2px solid var(--accent);
+            padding: 1rem 2rem;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            flex-wrap: wrap;
+            gap: 1rem;
+        }
+
+        .logo h1 {
+            color: var(--text);
+            font-size: 1.8rem;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+        }
+
+        .logo span {
+            color: var(--accent);
+        }
+
+        .lang-select {
+            background: var(--bg);
+            color: var(--text);
+            border: 1px solid var(--border);
+            padding: 0.5rem;
+            border-radius: 4px;
+            cursor: pointer;
+        }
+
+        nav {
+            background-color: var(--card-bg);
+            border-bottom: 1px solid var(--border);
+            padding: 0.5rem 2rem;
+        }
+
+        nav ul {
+            display: flex;
+            list-style: none;
+            gap: 1rem;
+            flex-wrap: wrap;
+        }
+
+        nav a {
+            color: var(--text);
+            text-decoration: none;
+            padding: 0.5rem 1rem;
+            border-radius: 4px;
+            font-weight: 500;
+            transition: 0.2s;
+        }
+
+        nav a:hover, nav a.active {
+            background-color: var(--accent);
+            color: #fff;
+        }
+
+        main {
+            max-width: 1200px;
+            margin: 2rem auto;
+            padding: 0 1rem;
+        }
+
+        .page-section {
+            display: none;
+        }
+
+        .page-section.active {
+            display: block;
+        }
+
+        /* SIATKA KART Z INSTRUKCJAMI */
+        .instructions-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+            gap: 1.5rem;
+            margin-top: 1.5rem;
+        }
+
+        .card {
+            background-color: var(--card-bg);
+            border: 1px solid var(--border);
+            border-radius: 8px;
+            overflow: hidden;
+            display: flex;
+            flex-direction: column;
+        }
+
+        .card img {
+            width: 100%;
+            height: 180px;
+            object-fit: cover;
+            background-color: var(--border);
+        }
+
+        .card-content {
+            padding: 1rem;
+            display: flex;
+            flex-direction: column;
+            flex-grow: 1;
+        }
+
+        .card-title {
+            font-size: 1.2rem;
+            margin-bottom: 0.3rem;
+        }
+
+        .card-author {
+            font-size: 0.85rem;
+            color: var(--accent);
+            margin-bottom: 0.5rem;
+            font-weight: bold;
+        }
+
+        .card-desc {
+            font-size: 0.9rem;
+            margin-bottom: 1rem;
+            flex-grow: 1;
+            line-height: 1.4;
+        }
+
+        .btn {
+            background-color: var(--accent);
+            color: white;
+            border: none;
+            padding: 0.6rem 1rem;
+            border-radius: 4px;
+            cursor: pointer;
+            text-align: center;
+            text-decoration: none;
+            font-weight: bold;
+            transition: 0.2s;
+            display: inline-block;
+        }
+
+        .btn:hover {
+            background-color: var(--accent-hover);
+        }
+
+        .info-box {
+            background-color: var(--card-bg);
+            border: 1px solid var(--border);
+            padding: 2rem;
+            border-radius: 8px;
+            max-width: 700px;
+        }
+
+        .info-box ol {
+            margin-left: 1.5rem;
+            margin-top: 1rem;
+            line-height: 1.8;
+        }
+    </style>
 </head>
 <body>
 
-    <!-- NAGŁÓWEK I MENU GŁÓWNE -->
     <header>
-        <h1>BRICK GUNS WORLD</h1>
-        
-        <!-- Przełącznik języków -->
+        <div class="logo">
+            <h1>Brick <span>Guns</span> World</h1>
+        </div>
         <div>
-            <label for="lang">Język:</label>
-            <select id="lang" onchange="changeLang(this.value)">
+            <label for="lang">Język: </label>
+            <select id="lang" class="lang-select" onchange="changeLang(this.value)">
                 <option value="pl">PL</option>
                 <option value="en">EN</option>
                 <option value="ru">RU</option>
             </select>
         </div>
-
-        <br>
-
-        <!-- Nawigacja -->
-        <nav>
-            <ul>
-                <li><a href="#" onclick="showPage('instructions')">Instrukcje</a></li>
-                <li><a href="#" onclick="showPage('tutorials')">Tutorials</a></li>
-                <li><a href="#" onclick="showPage('builds')">Builds</a></li>
-                <li><a href="#" onclick="showPage('news')">News</a></li>
-                <li><a href="#" onclick="showPage('add-builds')">Add Buildings</a></li>
-                <li><a href="https://discord.gg/YOUR_DISCORD_LINK" target="_blank">Chat (Discord)</a></li>
-                <li><a href="#" onclick="showPage('coming-soon')">Coming Soon</a></li>
-            </ul>
-        </nav>
     </header>
 
-    <hr>
+    <nav>
+        <ul>
+            <li><a href="#" class="nav-link active" onclick="showPage('instructions', this)">Instrukcje</a></li>
+            <li><a href="#" class="nav-link" onclick="showPage('tutorials', this)">Tutorials</a></li>
+            <li><a href="#" class="nav-link" onclick="showPage('builds', this)">Builds</a></li>
+            <li><a href="#" class="nav-link" onclick="showPage('news', this)">News</a></li>
+            <li><a href="#" class="nav-link" onclick="showPage('add-builds', this)">Add Buildings</a></li>
+            <li><a href="https://discord.gg/YOUR_DISCORD_LINK" target="_blank">Chat (Discord)</a></li>
+            <li><a href="#" class="nav-link" onclick="showPage('coming-soon', this)">Coming Soon</a></li>
+        </ul>
+    </nav>
 
     <main>
 
         <!-- KATALOG INSTRUKCJI -->
-        <section id="instructions" class="page-section">
+        <section id="instructions" class="page-section active">
             <h2>Katalog Instrukcji</h2>
             
-            <ul>
-                <li>
-                    <h3>AK-47 Custom</h3>
-                    <p>Autor: JanKowalski</p>
-                    <p>Opis: Replika AK-47 z klocków z mobilnym zamkiem i wyciąganym magazynkiem.</p>
-                    <!-- Link do osobnego pliku w folderze instrukcje -->
-                    <a href="instrukcje/ak47.html"><button>Zobacz / Pobierz instrukcję</button></a>
-                </li>
-            </ul>
+            <div class="instructions-grid">
+
+                <!-- TUTAJ DODAWAJ NOWE KARTY PROJEKTÓW (Początek) -->
+
+                <!-- KARTA 1: AK-47 -->
+                <div class="card">
+                    <img src="https://via.placeholder.com/400x250?text=AK-47" alt="AK-47">
+                    <div class="card-content">
+                        <div class="card-title">AK-47 Custom</div>
+                        <div class="card-author">Autor: JanKowalski</div>
+                        <div class="card-desc">Replika AK-47 z klocków z mobilnym zamkiem i wyciąganym magazynkiem.</div>
+                        <a href="instrukcje/ak47.html" class="btn">Zobacz / Pobierz instrukcję</a>
+                    </div>
+                </div>
+
+                <!-- SZABLON NOWEJ KARTY PROJEKTU (Skopiuj ten blok, aby dodać kolejną budowlę):
+                <div class="card">
+                    <img src="https://via.placeholder.com/400x250?text=NAZWA_PLIKU" alt="NAZWA_PROJEKTU">
+                    <div class="card-content">
+                        <div class="card-title">TUTAJ_NAZWA_PROJEKTU</div>
+                        <div class="card-author">Autor: TUTAJ_NICK</div>
+                        <div class="card-desc">TUTAJ_KRÓTKI_OPIS.</div>
+                        <a href="instrukcje/NAZWA_PLIKU.html" class="btn">Zobacz / Pobierz instrukcję</a>
+                    </div>
+                </div>
+                -->
+
+                <!-- TUTAJ DODAWAJ NOWE KARTY PROJEKTÓW (Koniec) -->
+
+            </div>
         </section>
 
-        <!-- TUTORIALS -->
-        <section id="tutorials" class="page-section" style="display: none;">
+        <!-- SEKCJA: TUTORIALS -->
+        <section id="tutorials" class="page-section">
             <h2>Poradniki i Tutoriale</h2>
-            <p>Strona z poradnikami wideo oraz krok po kroku.</p>
+            <p style="margin-top: 1rem;">Wkrótce pojawią się tu poradniki krok po kroku.</p>
         </section>
 
-        <!-- BUILDS -->
-        <section id="builds" class="page-section" style="display: none;">
+        <!-- SEKCJA: BUILDS -->
+        <section id="builds" class="page-section">
             <h2>Projekty Społeczności</h2>
-            <p>Galeria prac nadesłanych przez użytkowników.</p>
+            <p style="margin-top: 1rem;">Galeria prac nadesłanych przez użytkowników.</p>
         </section>
 
-        <!-- NEWS -->
-        <section id="news" class="page-section" style="display: none;">
-            <h2>News</h2>
-            <p>Najnowsze wiadomości dotyczące portalu.</p>
+        <!-- SEKCJA: NEWS -->
+        <section id="news" class="page-section">
+            <h2>Aktualności</h2>
+            <p style="margin-top: 1rem;">Najnowsze wiadomości i informacje o aktualizacjach.</p>
         </section>
 
-        <!-- ADD BUILDINGS -->
-        <section id="add-builds" class="page-section" style="display: none;">
-            <h2>Jak dodać własną budowlę?</h2>
-            <ol>
-                <li>Wejdź na nasz serwer Discord w zakładce <b>Chat</b>.</li>
-                <li>Przejdź do kanału forum <code>#yours-project</code>.</li>
-                <li>Stwórz nowy post zawierający:
-                    <ul>
-                        <li>Nazwę projektu</li>
-                        <li>Autora</li>
-                        <li>Zdjęcie instrukcji/budowli</li>
-                        <li>Plik lub link do pobrania</li>
-                    </ul>
-                </li>
-            </ol>
+        <!-- SEKCJA: ADD BUILDINGS -->
+        <section id="add-builds" class="page-section">
+            <div class="info-box">
+                <h2>Jak dodać własną budowlę?</h2>
+                <ol>
+                    <li>Wejdź na nasz serwer Discord w zakładce <b>Chat</b>.</li>
+                    <li>Przejdź do kanału forum <code>#yours-project</code>.</li>
+                    <li>Stwórz nowy post zawierający:
+                        <ul>
+                            <li>Nazwę projektu</li>
+                            <li>Autora</li>
+                            <li>Zdjęcie instrukcji/budowli</li>
+                            <li>Plik instrukcji lub link do pobrania</li>
+                        </ul>
+                    </li>
+                </ol>
+            </div>
         </section>
 
-        <!-- COMING SOON -->
-        <section id="coming-soon" class="page-section" style="display: none;">
+        <!-- SEKCJA: COMING SOON -->
+        <section id="coming-soon" class="page-section">
             <h2>Coming Soon</h2>
-            <p>Nowe moduły w przygotowaniu.</p>
+            <p style="margin-top: 1rem;">Nowe funkcje są w trakcie przygotowywania.</p>
         </section>
 
     </main>
 
     <script>
-        function showPage(pageId) {
+        function showPage(pageId, element) {
             var pages = document.querySelectorAll('.page-section');
             for (var i = 0; i < pages.length; i++) {
-                pages[i].style.display = 'none';
+                pages[i].classList.remove('active');
             }
-            document.getElementById(pageId).style.display = 'block';
+
+            var links = document.querySelectorAll('.nav-link');
+            for (var i = 0; i < links.length; i++) {
+                links[i].classList.remove('active');
+            }
+
+            document.getElementById(pageId).classList.add('active');
+            if (element) {
+                element.classList.add('active');
+            }
         }
 
         function changeLang(val) {
